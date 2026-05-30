@@ -17,8 +17,13 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LanguageRouteImport } from './routes/language'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TrackingIdRouteImport } from './routes/tracking.$id'
+import { Route as RestaurantIdRouteImport } from './routes/restaurant.$id'
+import { Route as FoodIdRouteImport } from './routes/food.$id'
 
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
@@ -60,6 +65,16 @@ const FavoritesRoute = FavoritesRouteImport.update({
   path: '/favorites',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -70,10 +85,27 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackingIdRoute = TrackingIdRouteImport.update({
+  id: '/tracking/$id',
+  path: '/tracking/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestaurantIdRoute = RestaurantIdRouteImport.update({
+  id: '/restaurant/$id',
+  path: '/restaurant/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodIdRoute = FoodIdRouteImport.update({
+  id: '/food/$id',
+  path: '/food/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
@@ -82,10 +114,15 @@ export interface FileRoutesByFullPath {
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
@@ -94,11 +131,16 @@ export interface FileRoutesByTo {
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
@@ -107,12 +149,17 @@ export interface FileRoutesById {
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/auth'
+    | '/cart'
+    | '/checkout'
     | '/favorites'
     | '/home'
     | '/language'
@@ -121,10 +168,15 @@ export interface FileRouteTypes {
     | '/otp'
     | '/profile'
     | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
+    | '/cart'
+    | '/checkout'
     | '/favorites'
     | '/home'
     | '/language'
@@ -133,10 +185,15 @@ export interface FileRouteTypes {
     | '/otp'
     | '/profile'
     | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/cart'
+    | '/checkout'
     | '/favorites'
     | '/home'
     | '/language'
@@ -145,11 +202,16 @@ export interface FileRouteTypes {
     | '/otp'
     | '/profile'
     | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   FavoritesRoute: typeof FavoritesRoute
   HomeRoute: typeof HomeRoute
   LanguageRoute: typeof LanguageRoute
@@ -158,6 +220,9 @@ export interface RootRouteChildren {
   OtpRoute: typeof OtpRoute
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
+  FoodIdRoute: typeof FoodIdRoute
+  RestaurantIdRoute: typeof RestaurantIdRoute
+  TrackingIdRoute: typeof TrackingIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -218,6 +283,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -232,12 +311,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tracking/$id': {
+      id: '/tracking/$id'
+      path: '/tracking/$id'
+      fullPath: '/tracking/$id'
+      preLoaderRoute: typeof TrackingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restaurant/$id': {
+      id: '/restaurant/$id'
+      path: '/restaurant/$id'
+      fullPath: '/restaurant/$id'
+      preLoaderRoute: typeof RestaurantIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food/$id': {
+      id: '/food/$id'
+      path: '/food/$id'
+      fullPath: '/food/$id'
+      preLoaderRoute: typeof FoodIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   FavoritesRoute: FavoritesRoute,
   HomeRoute: HomeRoute,
   LanguageRoute: LanguageRoute,
@@ -246,6 +348,9 @@ const rootRouteChildren: RootRouteChildren = {
   OtpRoute: OtpRoute,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
+  FoodIdRoute: FoodIdRoute,
+  RestaurantIdRoute: RestaurantIdRoute,
+  TrackingIdRoute: TrackingIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
