@@ -9,15 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as OtpRouteImport } from './routes/otp'
+import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LanguageRouteImport } from './routes/language'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OtpRoute = OtpRouteImport.update({
   id: '/otp',
   path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -28,6 +48,16 @@ const OnboardingRoute = OnboardingRouteImport.update({
 const LanguageRoute = LanguageRouteImport.update({
   id: '/language',
   path: '/language',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -44,48 +74,120 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
   '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
   '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
   '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
   '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
   '/language': typeof LanguageRoute
   '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
   '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/language' | '/onboarding' | '/otp'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/language' | '/onboarding' | '/otp'
-  id: '__root__' | '/' | '/auth' | '/language' | '/onboarding' | '/otp'
+  to:
+    | '/'
+    | '/auth'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  FavoritesRoute: typeof FavoritesRoute
+  HomeRoute: typeof HomeRoute
   LanguageRoute: typeof LanguageRoute
   OnboardingRoute: typeof OnboardingRoute
+  OrdersRoute: typeof OrdersRoute
   OtpRoute: typeof OtpRoute
+  ProfileRoute: typeof ProfileRoute
+  SearchRoute: typeof SearchRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/otp': {
       id: '/otp'
       path: '/otp'
       fullPath: '/otp'
       preLoaderRoute: typeof OtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -100,6 +202,20 @@ declare module '@tanstack/react-router' {
       path: '/language'
       fullPath: '/language'
       preLoaderRoute: typeof LanguageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -122,9 +238,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  FavoritesRoute: FavoritesRoute,
+  HomeRoute: HomeRoute,
   LanguageRoute: LanguageRoute,
   OnboardingRoute: OnboardingRoute,
+  OrdersRoute: OrdersRoute,
   OtpRoute: OtpRoute,
+  ProfileRoute: ProfileRoute,
+  SearchRoute: SearchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
