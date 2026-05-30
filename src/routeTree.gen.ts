@@ -9,38 +9,301 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as OtpRouteImport } from './routes/otp'
+import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as LanguageRouteImport } from './routes/language'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TrackingIdRouteImport } from './routes/tracking.$id'
+import { Route as RestaurantIdRouteImport } from './routes/restaurant.$id'
+import { Route as FoodIdRouteImport } from './routes/food.$id'
 
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtpRoute = OtpRouteImport.update({
+  id: '/otp',
+  path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LanguageRoute = LanguageRouteImport.update({
+  id: '/language',
+  path: '/language',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackingIdRoute = TrackingIdRouteImport.update({
+  id: '/tracking/$id',
+  path: '/tracking/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestaurantIdRoute = RestaurantIdRouteImport.update({
+  id: '/restaurant/$id',
+  path: '/restaurant/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodIdRoute = FoodIdRouteImport.update({
+  id: '/food/$id',
+  path: '/food/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/language': typeof LanguageRoute
+  '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
+  '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/language': typeof LanguageRoute
+  '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
+  '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/language': typeof LanguageRoute
+  '/onboarding': typeof OnboardingRoute
+  '/orders': typeof OrdersRoute
+  '/otp': typeof OtpRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/food/$id': typeof FoodIdRoute
+  '/restaurant/$id': typeof RestaurantIdRoute
+  '/tracking/$id': typeof TrackingIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/cart'
+    | '/checkout'
+    | '/favorites'
+    | '/home'
+    | '/language'
+    | '/onboarding'
+    | '/orders'
+    | '/otp'
+    | '/profile'
+    | '/search'
+    | '/food/$id'
+    | '/restaurant/$id'
+    | '/tracking/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  FavoritesRoute: typeof FavoritesRoute
+  HomeRoute: typeof HomeRoute
+  LanguageRoute: typeof LanguageRoute
+  OnboardingRoute: typeof OnboardingRoute
+  OrdersRoute: typeof OrdersRoute
+  OtpRoute: typeof OtpRoute
+  ProfileRoute: typeof ProfileRoute
+  SearchRoute: typeof SearchRoute
+  FoodIdRoute: typeof FoodIdRoute
+  RestaurantIdRoute: typeof RestaurantIdRoute
+  TrackingIdRoute: typeof TrackingIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/otp': {
+      id: '/otp'
+      path: '/otp'
+      fullPath: '/otp'
+      preLoaderRoute: typeof OtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/language': {
+      id: '/language'
+      path: '/language'
+      fullPath: '/language'
+      preLoaderRoute: typeof LanguageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +311,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tracking/$id': {
+      id: '/tracking/$id'
+      path: '/tracking/$id'
+      fullPath: '/tracking/$id'
+      preLoaderRoute: typeof TrackingIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restaurant/$id': {
+      id: '/restaurant/$id'
+      path: '/restaurant/$id'
+      fullPath: '/restaurant/$id'
+      preLoaderRoute: typeof RestaurantIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food/$id': {
+      id: '/food/$id'
+      path: '/food/$id'
+      fullPath: '/food/$id'
+      preLoaderRoute: typeof FoodIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  FavoritesRoute: FavoritesRoute,
+  HomeRoute: HomeRoute,
+  LanguageRoute: LanguageRoute,
+  OnboardingRoute: OnboardingRoute,
+  OrdersRoute: OrdersRoute,
+  OtpRoute: OtpRoute,
+  ProfileRoute: ProfileRoute,
+  SearchRoute: SearchRoute,
+  FoodIdRoute: FoodIdRoute,
+  RestaurantIdRoute: RestaurantIdRoute,
+  TrackingIdRoute: TrackingIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
